@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cricket Game</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bat Ball Stump Game</h1>
+    <button onclick="playGame('Bat')">
+   Bat</button>
+    <button onclick="playGame('Ball')">Ball</button>
+    <button onclick="playGame('Stump')">Stump</button>
+    <button onclick="localStorage.clear(); resetScore(); updateDisplay('','','','');">Reset</button>
+
+    <h3 id="user-move"></h3>
+    <h3 id="computer-move"></h3>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+
+    <script>
+        let scoreStr = localStorage.getItem('Score');
+        let score;
+
+        resetScore(scoreStr);
+
+        function resetScore(scoreStr) {
+            score = scoreStr ? JSON.parse(scoreStr) : {
+                win: 0,
+                lost: 0,
+                tie: 0
+            };
+
+            score.displayScore = function () {
+                return `No of matches won: ${score.win}, Lost: ${score.lost}, Tie: ${score.tie}`;
+            };
+        }
+
+        function playGame(userChoice) {
+            const randomNumber = Math.random() * 3;
+            let computerChoice;
+
+            if (randomNumber <= 1) {
+                computerChoice = 'Bat';
+            } else if (randomNumber <= 2) {
+                computerChoice = 'Ball';
+            } else {
+                computerChoice = 'Stump';
+            }
+
+            let resultMsg = '';
+
+            if (userChoice === computerChoice) {
+                resultMsg = "It's a tie!";
+                score.tie++;
+            } else if (
+                (userChoice === 'Bat' && computerChoice === 'Ball') ||
+                (userChoice === 'Ball' && computerChoice === 'Stump') ||
+                (userChoice === 'Stump' && computerChoice === 'Bat')
+            ) {
+                resultMsg = 'You won!';
+                score.win++;
+            } else {
+                resultMsg = 'Computer has won!';
+                score.lost++;
+            }
+
+            localStorage.setItem('Score', JSON.stringify(score));
+
+            updateDisplay(userChoice, computerChoice, resultMsg, score.displayScore());
+        }
+
+        function updateDisplay(userMove, computerMove, result, scoreDisplay) {
+            document.querySelector('#user-move').innerText = 
+            userMove!==undefined?`You chose ${userMove}`:'';
+            document.querySelector('#computer-move').innerText =
+            computerMove!==undefined? `Computer chose ${computerMove}`:'';
+            document.querySelector('#result').innerText = 
+            result||'';
+            document.querySelector('#score').innerText = scoreDisplay;
+        }
+
+        // Initial display on page load
+        updateDisplay('', '', '', score.displayScore());
+    </script>
+</body>
+</html>

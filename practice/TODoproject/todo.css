@@ -1,0 +1,52 @@
+body {
+    font-family: Arial;
+}
+
+#main-heading {
+    text-align: center;
+}
+
+#enter,
+#todo-date {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#add {
+    margin: 10px;
+    background-color: rgb(12, 121, 12);
+    color: white;
+    width: 90px;
+    height: 50px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button {
+    margin-left: 10px;
+    background-color: rgb(121, 25, 12);
+    color: white;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.todo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}

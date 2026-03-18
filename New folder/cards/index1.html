@@ -1,0 +1,187 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Square Game</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div id="main">
+    <div id="cursor"></div>
+    <div class="shape" id="b1"><h1>1</h1></div>
+    <div class="shape" id="b2"><h1>2</h1></div>
+    <div class="shape" id="b3"><h1>3</h1></div>
+    <div class="shape" id="b4"><h1>4</h1></div>
+  </div>
+  <script src="script1.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Square Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    #main {
+      display: grid;
+      grid-template-columns: repeat(2, 100px);
+      grid-template-rows: repeat(2, 100px);
+      gap: 10px;
+      width: max-content;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #e0e0e0;
+      position: relative;
+    }
+
+    .shape {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border: 2px solid #333;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .shape:hover {
+      background-color: white;
+    }
+
+    #cursor {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="main">
+    <div id="cursor"></div>
+    <div class="shape" id="b1"><h1>1</h1></div>
+    <div class="shape" id="b2"><h1>2</h1></div>
+    <div class="shape" id="b3"><h1>3</h1></div>
+    <div class="shape" id="b4"><h1>4</h1></div>
+  </div>
+
+<script>
+    
+let x = document.getElementById("b1");
+
+x.addEventListener("mouseenter", () => {
+    let randomNumber = Math.floor(Math.random() * 101);
+    x.querySelector("h1").textContent = randomNumber;
+});
+
+x.addEventListener("mouseleave", () => {
+    x.querySelector("h1").textContent = "1"; // keep the <h1> tag intact
+});
+
+let y = document.getElementById("b2");
+let clr = "green";
+y.addEventListener("mouseenter", () => {
+    if (clr === "green") {
+        y.style.backgroundColor = "green";
+        clr = "red";
+    } else {
+        y.style.backgroundColor = "red";
+        clr = "green";
+    }
+});
+y.addEventListener("mouseleave", () => {
+    y.style.backgroundColor = "white";
+});
+let z=document.getElementById("b3");
+z.addEventListener("mouseenter",()=>{
+   let a=Math.floor(Math.random()*256);
+   let b=Math.floor(Math.random()*256);
+   let c=Math.floor(Math.random()*256);
+    z.style.backgroundColor=`rgb(${a},${b},${c})`;
+})
+z.addEventListener("mouseleave", () => {
+    z.style.backgroundColor = "white";
+});
+// w=document.querySelector("b4");
+// w.addEventListener("mouseenter",()=>{
+//     function randomPink() {
+//     let r = Math.floor(Math.random() * 56) + 200; // 200–255
+//     let g = Math.floor(Math.random() * 101) + 100; // 100–200
+//     let b = Math.floor(Math.random() * 106) + 150; // 150–255
+//     return `rgb(${r}, ${g}, ${b})`;
+// }
+
+//   x.style.backgroundColor=`rgb(${r},${g},${b})`;
+// })
+let b4 = document.getElementById("b4");
+let b1 = document.getElementById("b1");
+let b2 = document.getElementById("b2");
+let b3 = document.getElementById("b3");
+
+b4.addEventListener("mouseenter", () => {
+    b1.style.backgroundColor = randomPink();
+    b2.style.backgroundColor = randomBlue();
+    b3.style.backgroundColor = randomYellow();
+});
+
+// Pink range
+function randomPink() {
+    let r = Math.floor(Math.random() * 56) + 200;  // 200–255
+    let g = Math.floor(Math.random() * 101) + 100; // 100–200
+    let b = Math.floor(Math.random() * 106) + 150; // 150–255
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Blue range
+function randomBlue() {
+    let r = Math.floor(Math.random() * 101);       // 0–100
+    let g = Math.floor(Math.random() * 151);       // 0–150
+    let b = Math.floor(Math.random() * 106) + 150; // 150–255
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Yellow range
+function randomYellow() {
+    let r = Math.floor(Math.random() * 56) + 200;  // 200–255
+    let g = Math.floor(Math.random() * 56) + 200;  // 200–255
+    let b = Math.floor(Math.random() * 101);       // 0–100
+    return `rgb(${r}, ${g}, ${b})`;
+}
+b4.addEventListener("mouseleave",()=>{
+    b1.style.backgroundColor="white";
+    b2.style.backgroundColor="white";
+    b3.style.backgroundColor="white";
+})
+let main = document.getElementById("main");
+let crsr = document.getElementById("cursor");
+
+main.addEventListener("mousemove", function (dets) {
+  const rect = main.getBoundingClientRect();
+  const x = dets.clientX - rect.left;
+  const y = dets.clientY - rect.top;
+
+  crsr.style.left = x + "px";
+  crsr.style.top = y + "px";
+});
+</script>
+</body>
+</html>
+

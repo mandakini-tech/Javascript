@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Myntra Bag</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="addToBag" onclick="
+    cartQuantity = cartQuantity + 1;
+    document.querySelector('#cart-summary').innerText = `Your Bag has ${cartQuantity} items`;
+  ">Add to Bag</button>
+
+  <button class="WC" onclick="
+    cartQuantity = cartQuantity -1;
+    document.querySelector('#cart-summary').innerText = `Your Bag has ${cartQuantity} items`;
+  ">Move to wishlist</button>
+
+  <button id="addSaleItem" onclick="
+    cartQuantity = cartQuantity + 2;
+    document.querySelector('#cart-summary').innerText = `Your Bag has ${cartQuantity} items`;
+  ">Add 1+1 sale item</button>
+  <p class="name-display"></p>
+  <h1 id="cart-summary"></h1>
+
+  <script>
+    let cartQuantity = 0;
+    document.querySelector('#cart-summary').innerText = `Your Bag has ${cartQuantity} items`;
+    var name="Mandakini";
+    document.querySelector('.name-display').innerText=name;
+    console.log(name);   
+    // let product1={
+    //   size:'S',
+    //   name:'Jeans',
+    //   fit:'Slim-fit',
+    //   'delivery-time':'Same day delivery',
+    // };
+    // console.log(product['delivery-time'])
+    // let obj={
+    //   message:'Good job',
+    //   status:'Complete',
+    // };
+    // console.log(obj);
+    // let {message,status}=obj;
+    // console.log(message);
+    // console.log(status);
+    // function isIdenticalProduct(product1,product2){
+    //   if(product1==product2){
+    //     return true;
+    //   }
+    //   if (typeof product1!=='object' || typeof product2!=='object'){
+    //     console.warn('Parameter passed was not an object');
+    //     return false;
+    //   }
+    //   if(product1.name===product2.name && product1.size===product2.size && product1.fit===product2.fit){
+    //     return true;
+    //   }
+    //   else{
+    //     return false;
+    //   }
+    // }
+    //     let product2={
+    //   size:'M',
+    //   name:'Jeans',
+    //   fit:'Regular-fit',
+    //   'delivery-time':'Same day delivery',
+    // };
+    //    let product3={
+    //   size:'M',
+    //   name:'Jeans',
+    //   fit:'Regular-fit',
+    //   'delivery-time':'Same day delivery',
+    // };
+    // product4=45;
+    // console.log(isIdenticalProduct(product1,product2));
+    //  console.log(isIdenticalProduct(product3,product2));
+        let product={
+      size:'M',
+      name:'Jeans',
+      fit:'Regular-fit',
+     rating:{
+      stars:4.5,
+      noOfReviews:345,
+     },
+    };
+    localStorage.setItem('product',JSON.stringify(product));
+    console.log(localStorage.getItem('product'));
+    let product2=JSON.parse(localStorage.getItem('product'));
+    console.log(product2);
+    // localStorage.setItem('Name','Hello world');
+    console.log(localStorage.getItem('Name'));
+    localStorage.clear();
+    //  console.log(isIdenticalProduct(product1,product4));
+    // let copyProduct=product;
+    // console.log(product);
+    // copyProduct.size='M';
+    // console.log(product);
+    // copyProduct.fit='Regular';
+    // console.log(product);
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+<style>
+    .my-button{
+        height:30px ;
+        width: 90px;
+    }
+    .size-double{
+ height:60px ;
+        width: 180px;
+    }
+</style> 
+</head>
+<body>
+    <button id="my-button"class="my-button" onclick="setTimeout(doubleSize,3000);">Click here</button>
+    <!-- <button id="my-button">Click here</button> -->
+    <script>
+function doubleSize(){
+let buttonElement=document.querySelector('#my-button')
+buttonElement.classList.add('size-double');
+}
+
+let arr=[12,13,14,15];
+let sum=0;
+arr.forEach(num=> sum+=num);
+console.log(sum); 
+let squares=arr.map(num=>num*num);
+console.log(squares); 
+// let buttonElement=document.querySelector('#my-button');
+// let behaviour=event=>
+//     console.log('Hello');
+// buttonElement.addEventListener('click',behaviour);
+// let printDate=event=>console.log(new Date());
+// buttonElement.addEventListener('click',printDate);
+// buttonElement.removeEventListener('click',behaviour);
+// let multiply=(num1,num2)=> num1*num2;
+// console.log(multiply(2,3));
+// multiply(12,3);
+// let printGreeting=()=>console.log('Namaste');
+// let runTwice=inputFunction=>{
+//     inputFunction();
+//      inputFunction();
+// }
+// console.log(runTwice(printGreeting))
+//   let alarm=function(){
+//     console.log("Hello world");
+//   };
+//   let id=setTimeout(alarm,3000);
+//   clearTimeout(id);
+    </script>
+</body>
+</html>  

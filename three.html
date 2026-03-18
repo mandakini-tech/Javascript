@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello world</h1>
+    <button id="myBtn">Click me</button>
+</body>
+<script>
+    // setTimeout(function(){
+    //     console.log("Pooja");
+    // },2000);
+    // document.querySelector('h1').innerHTML = "Welcome to DOM Manipulation";
+   const changeText=function(){
+    document.querySelector('h1').innerHTML="Text changed after button click";
+   }
+   setTimeout(changeText,3000);
+   clearTimeout();
+   document.querySelector('myBtn').addEventListener('click',function(){
+    clearTimeout(changeMe);
+    console.log("Timeout cleared");
+   });
+    // const button = document.getElementById('myBtn')
+    // button.style.padding = "10px 20px"
+    // button.style.fontSize = "16px"
+    // button.style.cursor = "pointer"
+
+    // button.addEventListener('click', function() {
+    //     alert('Button was clicked!')
+    // })
+</script>
+</html>

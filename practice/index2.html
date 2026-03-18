@@ -1,0 +1,81 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .odd {
+            background-color: aqua;
+        }
+        .even {
+            background-color: pink;
+        }
+        #my-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h3 id="greeting"></h3>
+    <button id="my-button" onclick="buttonPressed()"></button>
+
+    <script>
+        let noOftimesClicked = parseInt(localStorage.getItem('noOfTimesClicked')) || 0;
+
+        function buttonPressed() {
+            noOftimesClicked++;
+            localStorage.setItem('noOfTimesClicked', noOftimesClicked);
+            updateButton();
+        }
+
+            // if(noOftimesClicked%2==0){
+            //     button.style.color='Red';
+            // }
+            // else{
+            //     button.style.color='Blue';
+            // }
+
+        function updateButton() {
+            let button = document.querySelector('#my-button');
+
+            // Apply class based on even/odd
+            if (noOftimesClicked % 2 === 0) {
+                button.classList.remove('odd');
+                button.classList.add('even');
+            } else {
+                button.classList.remove('even');
+                button.classList.add('odd');
+            }
+
+            // Set button text
+            button.innerText = noOftimesClicked;
+            console.log('Pressed');
+        }
+
+        function doGreeting(personName = 'Pooja') {
+            let date = new Date();
+            let hours = date.getHours();
+            let heading = document.querySelector('#greeting');
+
+            if (hours < 12) {
+                heading.innerText = `${personName} Good Morning`;
+            } else if (hours < 18) {
+                heading.innerText = `${personName} Good Noon`;
+            } else {
+                heading.innerText = `${personName} Good Night`;
+            }
+        }
+
+        doGreeting();
+        updateButton(); // <-- Show correct count and color on load
+        let nums=[45,89,64,80];
+        let sum=0;
+        for(let i=0;i<nums.length;i++){
+            sum+=nums[i];
+        }
+        console.log(sum  )
+    </script>
+</body>
+</html>
